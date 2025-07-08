@@ -46,10 +46,10 @@ def main():
         if lang == "zh":
             asr_ckpt_dir = "../checkpoints/funasr"  # paraformer-zh dir under funasr
         elif lang == "en":
-            asr_ckpt_dir = "../checkpoints/Systran/faster-whisper-large-v3"
+            asr_ckpt_dir = "./ckpts/eval/Whisper"   #"../checkpoints/Systran/faster-whisper-large-v3"
     else:
         asr_ckpt_dir = ""  # auto download to cache dir
-    wavlm_ckpt_dir = "../checkpoints/UniSpeech/wavlm_large_finetune.pth"
+    wavlm_ckpt_dir = "./ckpts/eval/UniSpeech/wavlm_large_finetune.pth"    #"../checkpoints/UniSpeech/wavlm_large_finetune.pth"
 
     # --------------------------------------------------------------------------
 

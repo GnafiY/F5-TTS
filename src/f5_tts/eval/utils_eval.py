@@ -293,10 +293,16 @@ def load_asr_model(lang, ckpt_dir=""):
             disable_update=True,
         )  # following seed-tts setting
     elif lang == "en":
-        from faster_whisper import WhisperModel
+        # # original faster_whisper version
+        # from faster_whisper import WhisperModel
 
-        model_size = "large-v3" if ckpt_dir == "" else ckpt_dir
-        model = WhisperModel(model_size, device="cuda", compute_type="float16")
+        # model_size = "large-v3" if ckpt_dir == "" else ckpt_dir
+        # model = WhisperModel(model_size, device="cuda", compute_type="float16")
+
+        # hard coded here!
+        import whisper
+        model = whisper.load_model('ckpts/eval/Whisper/large-v3.pt', device="cuda")
+    
     return model
 
 
@@ -332,10 +338,19 @@ def run_asr_wer(args):
             hypo = res[0]["text"]
             hypo = zhconv.convert(hypo, "zh-cn")
         elif lang == "en":
-            segments, _ = asr_model.transcribe(gen_wav, beam_size=5, language="en")
+            ## original faster_whisper implementation
+            # segments, _ = asr_model.transcribe(gen_wav, beam_size=5, language="en")
+            # hypo = ""
+            # for segment in segments:
+            #     hypo = hypo + " " + segment.text
+
+
+            # openai-whisper
+            asr_results = asr_model.transcribe(gen_wav, beam_size=5, language="en")
+            segments = asr_results['segments']
             hypo = ""
             for segment in segments:
-                hypo = hypo + " " + segment.text
+                hypo = hypo + " " + segment['text']
 
         raw_truth = truth
         raw_hypo = hypo

@@ -1,3 +1,7 @@
+# Notes
+
+- <code>faster_whisper</code> is replaced by <code>openai-whisper</code> for unsolvable pytorch environment issue (missing <code>*.so</code>).
+
 # F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching
 
 [![python](https://img.shields.io/badge/Python-3.10-brightgreen)](https://github.com/SWivid/F5-TTS)

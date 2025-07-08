@@ -83,7 +83,7 @@ def main():
 
     if testset == "ls_pc_test_clean":
         metalst = rel_path + "/data/librispeech_pc_test_clean_cross_sentence.lst"
-        librispeech_test_clean_path = "<SOME_PATH>/LibriSpeech/test-clean"  # test-clean path
+        librispeech_test_clean_path = os.path.expanduser("~/datasets/LibriSpeech/LibriSpeech/test-clean")  # test-clean path
         metainfo = get_librispeech_test_clean_metainfo(metalst, librispeech_test_clean_path)
 
     elif testset == "seedtts_test_zh":

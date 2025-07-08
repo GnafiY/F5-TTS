@@ -48,7 +48,7 @@ dependencies = [
 eval = [
     "faster_whisper==0.10.1",
     "funasr",
-    "jiwer",
+    "jiwer==3.1.0",
     "modelscope",
     "zhconv",
     "zhon",
